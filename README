@@ -1,0 +1,41 @@
+Development Mode start:
+
+In 2 Terminals, 
+
+Client Directory: use 'npm start'
+Main Directory: use 'npm run dev'
+
+=========================================================
+
+This project is to showcase the use of the MERN technology stack, taking advantage of React components and connecting the front end to NodeJS to achieve an application that can create, save, delete and update character profiles for Dungeons and Dragons Campaigns.
+
+Feature List:
+
+    Create Character Profiles:
+        - Store biographical information/timeline.
+        - Set Stats.
+        - Real time sharing and updating of stats for in game applications.
+        - Manage inventory.
+        - Set Spells and Abilities.
+
+    Create Spells:
+        - Pick from a database of spells to assign to character.
+        - Create custom spells for homebrew campaigns.
+            * Set spell descriptions.
+            * Set stats and effects.
+
+    Create Custom Items:
+        - Set backstory or description.
+        - Set stats and effects.
+
+Optional Features:
+
+    Map Uploads:
+        - Set map markers for player locations, dungeons and towns.
+
+    Dice Rolling:
+        -Roll die and record history of recent rolls.
+
+    Campaign Management:
+        -Set all features inside their own campaign. Start a new campaign to start creating characters, spells and items.
+
