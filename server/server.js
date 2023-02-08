@@ -1,5 +1,16 @@
 const express = require('express') //importing express
 const app = express() //creating app
+const mongoose = require('mongoose') //importing mongoose module
+const mongoDB = process.env.DB_CONNECTION_STRING
+
+mongoose.set(strictQuery, false); //globally opting into filtering by properties that arent in the schema
+
+mongoose.connect(DB_CONNECTION_STRING, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true,
+	useFindAndModify: false
+})
 
 app.get('/api/characters', (req, res) => {
     const characters = [
@@ -10,6 +21,10 @@ app.get('/api/characters', (req, res) => {
 
     res.json(characters);
 });
+
+app.get ('/api/characters', (req, res) => {
+    console.log('Created a Character')
+})
 
 const PORT = 8080; //assigning port
 
