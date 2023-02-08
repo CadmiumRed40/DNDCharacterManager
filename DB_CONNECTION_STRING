@@ -1,0 +1,2 @@
+DB_CONNECTION_STRING = 'mongodb+srv://balrog:<password>@cluster0.9vtrzhd.mongodb.net/?retryWrites=true&w=majority'
+
