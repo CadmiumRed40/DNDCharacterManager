@@ -1,25 +1,30 @@
+const dotenv = require('dotenv')
 const express = require('express') //importing express
 const app = express() //creating app
 const mongoose = require('mongoose') //importing mongoose module
-const mongoDB = process.env.DB_CONNECTION_STRING
+const { run } = require('node:test')
+const Character = require('./models/Character')
 
-mongoose.set(strictQuery, false); //globally opting into filtering by properties that arent in the schema
+const mongoURL = process.env.DB_CONNECTION_STRING //Setting mongoURL to the connection string contained in the .env file for safe keeping
 
-mongoose.connect(DB_CONNECTION_STRING, {
-	useNewUrlParser: true,
+//using mongoose.set to define if the values that are already defined in the database can be the only ones updated will not work as it generates an error
+mongoose.connect(mongoURL, {
+    useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useCreateIndex: true,
 	useFindAndModify: false
+},() => {
+	console.log('Connected to Database')
 })
 
-app.get('/api/characters', (req, res) => {
-    const characters = [
-        {id: 1, firstName: 'Bleegus', lastName: 'Newland'},
-        {id: 2, firstName: 'Fazo', lastName: 'Galbor'},
-        {id: 3, firstName: 'Malat', lastName: 'Yargus'},
-    ];
 
-    res.json(characters);
+app.get('/api/characters', (req, res) => {
+    run()
+    async function run() {
+    const character = await Character.create({ firstName: 'Bleegus', lastName: 'Newland'})
+    res.json(character);
+    console.log('created character')
+    }
 });
 
 app.get ('/api/characters', (req, res) => {
