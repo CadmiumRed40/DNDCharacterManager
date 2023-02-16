@@ -2,7 +2,6 @@ const dotenv = require('dotenv')
 const express = require('express') //importing express
 const app = express() //creating app
 const mongoose = require('mongoose') //importing mongoose module
-const { run } = require('node:test')
 const Character = require('./models/Character')
 
 const mongoURL = process.env.DB_CONNECTION_STRING //Setting mongoURL to the connection string contained in the .env file for safe keeping
@@ -18,6 +17,7 @@ mongoose.connect(mongoURL, {
 })
 
 
+/*
 app.get('/api/characters', (req, res) => {
     run()
     async function run() {
@@ -30,6 +30,7 @@ app.get('/api/characters', (req, res) => {
 app.get ('/api/characters', (req, res) => {
     console.log('Created a Character')
 })
+*/
 
 const PORT = 8080; //assigning port
 
