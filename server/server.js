@@ -1,12 +1,14 @@
 const dotenv = require('dotenv')
 const express = require('express') //importing express
+const cors = require('cors')
 const app = express() //creating app
 const mongoose = require('mongoose') //importing mongoose module
 const Character = require('./models/Character')
 
 const mongoURL = process.env.DB_CONNECTION_STRING //Setting mongoURL to the connection string contained in the .env file for safe keeping
 
-//using mongoose.set to define if the values that are already defined in the database can be the only ones updated will not work as it generates an error
+app.use(cors())//instatiating app object on the creation of the express server.
+
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,
 	useUnifiedTopology: true,
@@ -14,23 +16,15 @@ mongoose.connect(mongoURL, {
 	useFindAndModify: false
 },() => {
 	console.log('Connected to Database')
-})
-
-
-/*
-app.get('/api/characters', (req, res) => {
-    run()
-    async function run() {
-    const character = await Character.create({ firstName: 'Bleegus', lastName: 'Newland'})
-    res.json(character);
-    console.log('created character')
-    }
 });
 
-app.get ('/api/characters', (req, res) => {
-    console.log('Created a Character')
-})
-*/
+app.use('/login', (req, res) => { //app.use to either make a get or post request as express handles it all the same. 
+    res.send({                    //production ready applications need to be more specific when fetching a token and submitting the login form.
+        token: 'test1234'         //sending test token to localhost:8080/login
+    });
+});
+
+
 
 const PORT = 8080; //assigning port
 
