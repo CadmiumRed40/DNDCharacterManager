@@ -20,7 +20,8 @@ mongoose.connect(mongoURL, {
 
 app.use('/login', (req, res) => { //app.use to either make a get or post request as express handles it all the same. 
     res.send({                    //production ready applications need to be more specific when fetching a token and submitting the login form.
-        token: 'test1234'         //sending test token to localhost:8080/login
+        user: user.userName,
+        password: user.password          //sending test token to localhost:8080/login
     });
 });
 
